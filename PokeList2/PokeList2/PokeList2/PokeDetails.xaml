@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PokeList2.PokeDetails">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Path=Pokemon.Name}" 
+                   FontSize="Title" 
+                   HorizontalOptions="Center"/>
+            <Label Text="{Binding Path=Pokemon.Weight, StringFormat='Weight {0}'}"/>
+
+            <Image Source="{Binding Path=Pokemon.Sprites.Front_default}" HeightRequest="200"/>
+            <Image Source="{Binding Path=Pokemon.Sprites.Back_default}" HeightRequest="200"/>
+            <ListView ItemsSource="{Binding Path=Pokemon.AbilitySlots}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Path=Pokemon.Ability.Name}"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
